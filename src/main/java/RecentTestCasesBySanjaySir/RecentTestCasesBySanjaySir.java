@@ -32,12 +32,24 @@ public class RecentTestCasesBySanjaySir
 	@FindBy(xpath="//span[@class='user-id']") private WebElement UserId;
 	@FindBy(xpath="//input[@icon='search']") private WebElement SearchEquity; 
 	@FindBy(xpath="//ul[@class='omnisearch-results']/div/li/span/span")	private List<WebElement> SearchedStock;
+	@FindBy(xpath="//table[@class='table']//tr[3]/td[2]") private WebElement AvailableCash;
+	@FindBy(xpath="//a[@href='/funds']") private WebElement FundMenu;
+	@FindBy(xpath="//button[@class='button-outline cancel']")	private WebElement BuyCancel;
+	
+	
 	
 	public RecentTestCasesBySanjaySir(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);
 	}
-	
+	public String GetAvailableCash() 
+	{
+		BuyCancel.click();
+		FundMenu.click();
+		String AmountAvailable=AvailableCash.getText();
+		
+		return AmountAvailable;
+	}
 	public void ClickBuyEquity(WebDriver driver,String EqName) 
 	{
 		
